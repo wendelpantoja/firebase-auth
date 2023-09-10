@@ -7,11 +7,7 @@ interface TypeInput extends InputHTMLAttributes<HTMLInputElement> {
     textLabel: string;
     type: string;
     placeholder: string;
-    register: UseFormRegister<{
-        email: string;
-        password: string;
-        passwordConfirme: string;
-    }>;
+    register: UseFormRegister<any>;
     registerName: "email" | "password" | "passwordConfirme";
     value?: string | undefined;
 }
