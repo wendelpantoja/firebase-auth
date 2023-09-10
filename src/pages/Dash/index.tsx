@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom"
 export function Dash() {
     const [handleModal, setHandleModal] = useState(false)
     const auth = useAuth()
+    
     if(!auth.user) {
         return <Navigate to="/login" />
     }
