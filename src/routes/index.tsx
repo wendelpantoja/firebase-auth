@@ -19,12 +19,6 @@ export const router = createBrowserRouter([
     },
     {
       path: "/dash",
-      element: <Dash />,
-      children: [
-        {
-            path: "/dash",
-            element: <h1>Você não é autorizado</h1>
-        }
-      ]
+      element: <Dash />
     },
   ]);
