@@ -5,6 +5,7 @@ import {  onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "../../services/fireBaseConfig";
 import { errosCode } from "./erros";
 import { Notification } from "../../components/Notification";
+import { SpinGlobal } from "../../components/SpinGlobal";
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
@@ -18,6 +19,7 @@ interface NotificationProps {
 } 
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
+    const [handleSpinGlobal, setHandleSpinGlobal] = useState(true)
     const [user, setUser] = useState<User | null>(null)
     const [handleSpinState, setHandleSpinState] = useState(false)
     const { notificationOpen, contextHolder } = Notification()
@@ -27,6 +29,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
             if(user) {
                 setUser(user)
             }
+            setHandleSpinGlobal(false)
         })   
         
         return subscriber
@@ -86,6 +89,10 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
                 })
             }
         })
+    }
+
+    if(handleSpinGlobal) {
+        return <SpinGlobal />
     }
 
 
